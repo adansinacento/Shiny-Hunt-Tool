@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pokemon shiny hunt</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+</head>
+<body class="bg-dark">
+    <div class="container-fluid">
+        <h1>Shiny pokemon tracker</h1>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#home">Tracker</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#setup">Setup</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content" style="margin-top: 15px;">
+            <div class="tab-pane container active" id="home">
+                <div class="card text-white bg-dark border-secondary">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-3 col-6">
+                                <div class="card">
+                                    <div class="card-body" style="display:none">
+                                        <img id="img_poke" height="128px">
+                                        <p>Regular sprite</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="card">
+                                    <div class="card-body" style="display:none">
+                                        <img id="img_poke_shiny" height="128px">
+                                        <p>Shiny sprite</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h1 id="display_encounters" class="text-center text-white display-1">0</h1>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-top:15px;">
+                            <div class="col-md-4 offset-md-2">
+                                <button type="button" style="margin-bottom:5px;" onclick="DecreaseEncounters()" class="btn btn-block btn-outline-danger" name="button">-</button>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-block btn-dark btn-outline-primary" onclick="IncreaseEncounter()" name="button">+</button>
+                            </div>
+                        </div>
+                        <table class="table table-hover table-sm table-striped table-bordered table-dark">
+                            <tr>
+                                <th>Probability</th>
+                                <td id="probability">0</td>
+                            </tr>
+                            <tr>
+                                <th>Binomial Probability</th>
+                                <td id="binomial">0%</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane container fade" id="setup">
+                <div class="form-group">
+                    <label for="sel_pokemon">Pokemon</label>
+                    <input type="text" class="form-control" id="sel_pokemon">
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="has_charm">
+                    <label class="custom-control-label" for="has_charm">Shiny Charm</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="has_lure">
+                    <label class="custom-control-label" for="has_lure">Active Lure</label>
+                </div>
+                <div class="form-group">
+                    <label for="sel_gen">Generation</label>
+                    <select class="custom-select" id="sel_gen">
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option selected>8</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sel_meth">Hunting method</label>
+                    <select class="custom-select" id="sel_meth">
+                        <option selected value="sr" >Random encounter / sr</option>
+                        <option value="mm">Masuda method</option>
+                        <option value="cc">Catch combo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/names.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+</body>
+</html>
