@@ -1,5 +1,6 @@
 var total_enconters = 0;
-var probability = 0.00366206467;
+var probability = 0;
+var ninetyAt = 0;
 
 function IncreaseEncounter(){
     total_enconters += 1;
@@ -91,15 +92,74 @@ function DecreaseEncounters(){
     UpdateData();
 }
 
-function UpdateData(){
+//sets a specific value to the encounters var, allowing the user to skip to specfic num
+function CustomEncounters() { 
+    //get value from imput
+    var enc = $('#custom_encounters').val();
+    enc = Number(enc); //convert value to Num
+
+    //verify its a valid number
+    if (!Number.isInteger(enc)) {
+        DisplayAlertSetup('alert-danger', 'Error!', 'Value can only be set to integer numbers.');
+        return;
+    }
+    if (enc < 0) {//must be at least 0
+        DisplayAlertSetup('alert-danger', 'Error!', 'Value cannot be lower than 0.');
+        return;
+    }
+       
+    //set to var and update
+    total_enconters = enc;
+    UpdateData();
+
+    DisplayAlertSetup('alert-success', 'Success!', 'Number of encounters updated.');
+}
+
+function DisplayAlertSetup(ctxClass, title, message) {
+    var html = '<div class="alert ' + ctxClass + ' alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert" >&times;</button ><strong>' + title + '</strong>' + message + '</div >';
+
+    $('#alert_setup').html(html);
+}
+
+function UpdateData() {
+    //update enconters on screen
     $('#display_encounters').text(total_enconters);
 
-
+    //calculate probability given current data
     var prob = getProbability(total_enconters);
-    var binomial = BinomialProbability(prob, total_enconters) * 100;
-    $('#binomial').text(binomial.toFixed(3) + '%');
-    var readableProb = 1/prob;
-    $('#probability').text('1/'+readableProb.toFixed(2));
+
+    if (prob != probability) { //this stores the probability only when it changes from a previously saved value
+        probability = prob;
+        until90 = NinetyPercentAt(probability); //if probability changes, recalculate where the 90 percent will be at
+    }
+
+    //calculate binomial prob
+    var binomial = BinomialProbability(prob, total_enconters) * 100; //multiply by 100 to obtain the percentage
+    $('#binomial').text(binomial.toFixed(3) + '%'); //display on screen (fixed to 3 decimals)
+
+    //calculate and display how many are we behind to get to the 90% binomial
+    var encounters_behind = until90 - total_enconters;
+    $('#until90').text(encounters_behind);
+
+    var readableProb = 1/prob; // 1/prob its a way to represent more "humanly" the probability
+    $('#probability').text('1/'+readableProb.toFixed(2)); //and display that.
+}
+
+function NinetyPercentAt(prob) {
+    //this is control, prob of 0 would never break the while loop
+    if (prob == 0)
+        return 0;
+
+    //start vars at 0 
+    var binomial = 0;
+    var encounters = 0;
+
+    //and incremeant them in the loop until the binomial prob = 90 %
+    while (binomial < 0.9) {
+        binomial = BinomialProbability(prob, encounters++);
+    }
+
+    return encounters;
 }
 
 function BinomialProbability(prob, cases){

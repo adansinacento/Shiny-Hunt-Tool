@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Pokemon shiny hunt</title>
@@ -72,6 +72,10 @@
                                     <th>Binomial Probability</th>
                                     <td id="binomial">0%</td>
                                 </tr>
+                                <tr>
+                                    <th>Until 90%</th>
+                                    <td id="until90">0</td>
+                                </tr>
                             </table>
                         </div>
                     </div>
@@ -83,16 +87,16 @@
                         <input type="text" class="form-control" id="sel_pokemon">
                     </div>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="has_charm">
+                        <input type="checkbox" class="custom-control-input" id="has_charm" onchange="UpdateData()">
                         <label class="custom-control-label" for="has_charm">Shiny Charm</label>
                     </div>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="has_lure">
+                        <input type="checkbox" class="custom-control-input" id="has_lure" onchange="UpdateData()">
                         <label class="custom-control-label" for="has_lure">Active Lure</label>
                     </div>
                     <div class="form-group">
                         <label for="sel_gen">Generation</label>
-                        <select class="custom-select" id="sel_gen">
+                        <select class="custom-select" id="sel_gen" onchange="UpdateData()">
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -104,12 +108,21 @@
                     </div>
                     <div class="form-group">
                         <label for="sel_meth">Hunting method</label>
-                        <select class="custom-select" id="sel_meth">
+                        <select class="custom-select" id="sel_meth" onchange="()">
                             <option selected value="sr" >Random encounter / sr</option>
                             <option value="mm">Masuda method</option>
                             <option value="cc">Catch combo</option>
                         </select>
                     </div>
+                    <hr />
+                    <div class="form-group">
+                        <label for="custom_encounters">Set encounter count at specific value</label>
+                        <input type="number" class="form-control" id="custom_encounters" min="0" step="1" />
+                    </div>
+                    <button class="btn btn-outline-primary" onclick="CustomEncounters()">Set</button>
+                    
+                    <div id="alert_setup"></div>
+
                 </div>
             </div>
         </div>
