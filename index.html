@@ -108,7 +108,7 @@
                     </div>
                     <div class="form-group">
                         <label for="sel_meth">Hunting method</label>
-                        <select class="custom-select" id="sel_meth" onchange="()">
+                        <select class="custom-select" id="sel_meth" onchange="UpdateData()">
                             <option selected value="sr" >Random encounter / sr</option>
                             <option value="mm">Masuda method</option>
                             <option value="cc">Catch combo</option>
@@ -120,7 +120,7 @@
                         <input type="number" class="form-control" id="custom_encounters" min="0" step="1" />
                     </div>
                     <button class="btn btn-outline-primary" onclick="CustomEncounters()">Set</button>
-                    
+
                     <div id="alert_setup"></div>
 
                 </div>
