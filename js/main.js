@@ -1,13 +1,14 @@
 var total_enconters = 0;
 var probability = 0;
 var ninetyAt = 0;
+var current_combo = 0;
 
 function IncreaseEncounter(){
     total_enconters += 1;
     UpdateData();
 }
 
-function catchCombo(combo, charm, baseProbability){
+function catchCombo(charm, baseProbability){
     var factor = 1;
     var lure = $('#has_lure')[0].checked;
 
@@ -18,6 +19,8 @@ function catchCombo(combo, charm, baseProbability){
     if (lure){
         factor += 1;
     }
+
+    var combo = current_combo;
 
     //modify according to combo
     if (combo > 10){ //only calculate on 11+
@@ -69,14 +72,14 @@ function BaseProbability(){
         return 4096;
 }
 
-function getProbability(encounters){
+function getProbability(){
     var has_charm = $('#has_charm')[0].checked;
     var method = $('#sel_meth').val();
     var prob = BaseProbability();
 
     switch (method) {
         case 'cc':
-            return catchCombo(encounters, has_charm, prob);
+            return catchCombo(has_charm, prob);
         case 'mm':
             var gen = $('#sel_gen').val();
             return masudaMethod(has_charm, prob, gen);
@@ -115,6 +118,29 @@ function CustomEncounters() {
     DisplayAlertSetup('alert-success', 'Success!', 'Number of encounters updated.');
 }
 
+function CustomCombo() { 
+    //get value from imput
+    var combo = $('#custom_combo').val();
+    combo = Number(combo); //convert value to Num
+
+    //verify its a valid number
+    if (!Number.isInteger(combo)) {
+        DisplayAlertSetup('alert-danger', 'Error!', 'Value can only be set to integer numbers.');
+        return;
+    }
+    if (combo < 0) {//must be at least 0
+        DisplayAlertSetup('alert-danger', 'Error!', 'Value cannot be lower than 0.');
+        return;
+    }
+       
+    //set to var and update
+    current_combo = combo;
+    $('#combo').text(current_combo);
+    UpdateData();
+
+    DisplayAlertSetup('alert-success', 'Success!', 'Catch combo updated.');
+}
+
 function DisplayAlertSetup(ctxClass, title, message) {
     var html = '<div class="alert ' + ctxClass + ' alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert" >&times;</button ><strong>' + title + '</strong>' + message + '</div >';
 
@@ -126,7 +152,7 @@ function UpdateData() {
     $('#display_encounters').text(total_enconters);
 
     //calculate probability given current data
-    var prob = getProbability(total_enconters);
+    var prob = getProbability();
 
     if (prob != probability) { //this stores the probability only when it changes from a previously saved value
         probability = prob;
@@ -175,6 +201,38 @@ $(document).ready(function() {
     });
     UpdateData();
 });
+
+function ChangeHuntMethod(meth){
+    //hide catch combo row and display it only if that method was selected
+    $('#comboMeterRow').hide();
+
+    if (meth == 'cc') {
+        $('#comboMeterRow').show();
+        $('#custom-combo-container').show('fast')
+    } else {
+        $('#custom-combo-container').hide('fast')
+    }
+    UpdateData();
+}
+
+function IncreaseCombo() {
+    current_combo++;
+
+    $('#combo').text(current_combo);
+
+    UpdateData();
+}
+
+function DecreaseCombo() {
+    current_combo--;
+
+    if (current_combo < 0)
+        current_combo = 0;
+
+    $('#combo').text(current_combo);
+
+    UpdateData();
+}
 
 function UpdatePokeImg(number){
     var n = parseInt(number);

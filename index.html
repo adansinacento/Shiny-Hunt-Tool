@@ -31,7 +31,7 @@
                 <div class="tab-pane container active" id="home">
                     <div class="card text-white bg-dark border-secondary">
                         <div class="card-body">
-
+                            <!-- display sprites and counter -->
                             <div class="row">
                                 <div class="col-md-3 col-6">
                                     <div class="card">
@@ -53,8 +53,8 @@
                                     <h1 id="display_encounters" class="text-center text-white display-1">0</h1>
                                 </div>
                             </div>
-
-
+                            <!-- end of sprites/counter -->    
+                            <!-- increase/decrease buttons -->
                             <div class="row" style="margin-top:15px;">
                                 <div class="col-md-4 offset-md-2">
                                     <button type="button" style="margin-bottom:5px;" onclick="DecreaseEncounters()" class="btn btn-block btn-outline-danger" name="button">-</button>
@@ -63,7 +63,18 @@
                                     <button type="button" class="btn btn-block btn-dark btn-outline-primary" onclick="IncreaseEncounter()" name="button">+</button>
                                 </div>
                             </div>
+                            <!-- table displaying encounter stats -->
                             <table class="table table-hover table-sm table-striped table-bordered table-dark">
+                                <tr style="display: none;" id="comboMeterRow">
+                                    <th>Catch combo</th>
+                                    <td>
+                                        <span id="combo">0</span>
+                                        <span>
+                                            <button class="btn btn-dark btn-outline-danger btn-sm" onclick="DecreaseCombo()">-</button>
+                                            <button class="btn btn-dark btn-outline-primary btn-sm" onclick="IncreaseCombo()">+</button>
+                                        </span>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <th>Probability</th>
                                     <td id="probability">0</td>
@@ -108,11 +119,18 @@
                     </div>
                     <div class="form-group">
                         <label for="sel_meth">Hunting method</label>
-                        <select class="custom-select" id="sel_meth" onchange="UpdateData()">
+                        <select class="custom-select" id="sel_meth" onchange="ChangeHuntMethod(this.value)">
                             <option selected value="sr" >Random encounter / sr</option>
                             <option value="mm">Masuda method</option>
                             <option value="cc">Catch combo</option>
                         </select>
+                    </div>
+                    <div id="custom-combo-container" style="display: none;">
+                        <div class="form-group">
+                            <label for="custom_combo">Set catch combo at specific value</label>
+                            <input type="number" class="form-control" id="custom_combo" min="0" step="1" />
+                        </div>
+                        <button class="btn btn-outline-primary" onclick="CustomCombo()">Set</button>
                     </div>
                     <hr />
                     <div class="form-group">
