@@ -96,12 +96,20 @@ var names = [
     value: "019"
   },
   {
+    label: "Rattata [alolan]",
+    value: "19-1"
+  },
+  {
     label: "Female raticate",
     value: "20-female"
   },
   {
     label: "Raticate",
     value: "020"
+  },
+  {
+    label: "Raticate [alolan]",
+    value: "20-1"
   },
   {
     label: "Spearow",
@@ -140,12 +148,24 @@ var names = [
     value: "026"
   },
   {
+    label: "Raichu [alolan]",
+    value: "26-1"
+  },
+  {
     label: "Sandshrew",
     value: "027"
   },
   {
+    label: "Sandshrew [alolan]",
+    value: "27-1"
+  },
+  {
     label: "Sandslash",
     value: "028"
+  },
+  {
+    label: "Sandslash [alolan]",
+    value: "28-1"
   },
   {
     label: "Nidoran♀",
@@ -184,8 +204,16 @@ var names = [
     value: "037"
   },
   {
+    label: "Vulpix [alolan]",
+    value: "37-1"
+  },
+  {
     label: "Ninetales",
     value: "038"
+  },
+  {
+    label: "Ninetales [alolan]",
+    value: "38-1"
   },
   {
     label: "Jigglypuff",
@@ -252,8 +280,16 @@ var names = [
     value: "050"
   },
   {
+    label: "Diglett [alolan]",
+    value: "50-1"
+  },
+  {
     label: "Dugtrio",
     value: "051"
+  },
+  {
+    label: "Dugtrio [alolan]",
+    value: "51-1"
   },
   {
     label: "Meowth gmax",
@@ -264,8 +300,20 @@ var names = [
     value: "052"
   },
   {
+    label: "Meowth [alolan]",
+    value: "52-1"
+  },
+  {
+    label: "Meowth [galarian]",
+    value: "52-2"
+  },
+  {
     label: "Persian",
     value: "053"
+  },
+  {
+    label: "Persian [alolan]",
+    value: "53-1"
   },
   {
     label: "Psyduck",
@@ -364,28 +412,56 @@ var names = [
     value: "074"
   },
   {
+    label: "Geodude [alolan]",
+    value: "74-1"
+  },
+  {
     label: "Graveler",
     value: "075"
+  },
+  {
+    label: "Graveler [alolan]",
+    value: "75-1"
   },
   {
     label: "Golem",
     value: "076"
   },
   {
+    label: "Golem [alolan]",
+    value: "76-1"
+  },
+  {
     label: "Ponyta",
     value: "077"
+  },
+  {
+    label: "Ponyta [galarian]",
+    value: "77-1"
   },
   {
     label: "Rapidash",
     value: "078"
   },
   {
+    label: "Rapidash [galarian]",
+    value: "78-1"
+  },
+  {
     label: "Slowpoke",
     value: "079"
   },
   {
+    label: "Slowpoke [galarian]",
+    value: "79-1"
+  },
+  {
     label: "Slowbro",
     value: "080"
+  },
+  {
+    label: "Slowbro [galarian]",
+    value: "80-2"
   },
   {
     label: "Magnemite",
@@ -398,6 +474,10 @@ var names = [
   {
     label: "Farfetch'd",
     value: "083"
+  },
+  {
+    label: "Farfetch'd [galarian]",
+    value: "83-1"
   },
   {
     label: "Female doduo",
@@ -428,8 +508,16 @@ var names = [
     value: "088"
   },
   {
+    label: "Grimer [alolan]",
+    value: "88-1"
+  },
+  {
     label: "Muk",
     value: "089"
+  },
+  {
+    label: "Muk [alolan]",
+    value: "89-1"
   },
   {
     label: "Shellder",
@@ -500,12 +588,20 @@ var names = [
     value: "103"
   },
   {
+    label: "Exeggutor [alolan]",
+    value: "103-1"
+  },
+  {
     label: "Cubone",
     value: "104"
   },
   {
     label: "Marowak",
     value: "105"
+  },
+  {
+    label: "Marowak [alolan]",
+    value: "105-1"
   },
   {
     label: "Hitmonlee",
@@ -526,6 +622,10 @@ var names = [
   {
     label: "Weezing",
     value: "110"
+  },
+  {
+    label: "Weezing [galarian]",
+    value: "110-1"
   },
   {
     label: "Female rhyhorn",
@@ -590,6 +690,10 @@ var names = [
   {
     label: "Mr. Mime",
     value: "122"
+  },
+  {
+    label: "Mr. Mime [galarian]",
+    value: "122-1"
   },
   {
     label: "Female scyther",
@@ -708,12 +812,24 @@ var names = [
     value: "144"
   },
   {
+    label: "Articuno [galarian]",
+    value: "144-1"
+  },
+  {
     label: "Zapdos",
     value: "145"
   },
   {
+    label: "Zapdos [galarian]",
+    value: "145-1"
+  },
+  {
     label: "Moltres",
     value: "146"
+  },
+  {
+    label: "Moltres [galarian]",
+    value: "146-1"
   },
   {
     label: "Dratini",
@@ -964,6 +1080,10 @@ var names = [
     value: "199"
   },
   {
+    label: "Slowking [galarian]",
+    value: "199-1"
+  },
+  {
     label: "Misdreavus",
     value: "200"
   },
@@ -1090,6 +1210,10 @@ var names = [
   {
     label: "Corsola",
     value: "222"
+  },
+  {
+    label: "Corsola [galarian]",
+    value: "222-1"
   },
   {
     label: "Remoraid",
@@ -1276,8 +1400,16 @@ var names = [
     value: "263"
   },
   {
+    label: "Zigzagoon [galarian]",
+    value: "263-1"
+  },
+  {
     label: "Linoone",
     value: "264"
+  },
+  {
+    label: "Linoone [galarian]",
+    value: "264-1"
   },
   {
     label: "Wurmple",
@@ -2624,8 +2756,24 @@ var names = [
     value: "554"
   },
   {
+    label: "Darumaka [galarian]",
+    value: "554-1"
+  },
+  {
     label: "Darmanitan",
     value: "555"
+  },
+  {
+    label: "Darmanitan [zen]",
+    value: "555-1"
+  },
+  {
+    label: "Darmanitan [galarian]",
+    value: "555-2"
+  },
+  {
+    label: "Darmanitan [zen][galarian]",
+    value: "555-3"
   },
   {
     label: "Maractus",
@@ -2656,6 +2804,10 @@ var names = [
     value: "562"
   },
   {
+    label: "Yamask [galarian]",
+    value: "562-1"
+  },
+  {
     label: "Cofagrigus",
     value: "563"
   },
@@ -2681,7 +2833,7 @@ var names = [
   },
   {
     label: "Garbodor",
-    value: "569"
+    value: "569 (2)"
   },
   {
     label: "Zorua",
@@ -2886,6 +3038,10 @@ var names = [
   {
     label: "Stunfisk",
     value: "618"
+  },
+  {
+    label: "Stunfisk [galarian]",
+    value: "618-1"
   },
   {
     label: "Mienfoo",
@@ -3846,10 +4002,6 @@ var names = [
   {
     label: "Toxtricity gmax",
     value: "849-gmax"
-  },
-  {
-    label: "Toxtricity gmax",
-    value: "849-1-gmax"
   },
   {
     label: "Toxtricity",

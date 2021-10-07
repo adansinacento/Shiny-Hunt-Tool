@@ -235,13 +235,9 @@ function DecreaseCombo() {
 }
 
 function UpdatePokeImg(number){
-    var regExp = /[a-zA-Z]/g;
-
-
-    if (!regExp.test(number)){
+    if (!number.includes('-') && !number.includes("(")){
         number = parseInt(number);
     }
-    console.log(number);
     $(".card-body").show();
 
     $("#img_poke").attr("src","sprites/" + number + ".png");
