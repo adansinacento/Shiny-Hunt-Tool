@@ -96,7 +96,7 @@ function DecreaseEncounters(){
 }
 
 //sets a specific value to the encounters var, allowing the user to skip to specfic num
-function CustomEncounters() { 
+function CustomEncounters() {
     //get value from imput
     var enc = $('#custom_encounters').val();
     enc = Number(enc); //convert value to Num
@@ -110,7 +110,7 @@ function CustomEncounters() {
         DisplayAlertSetup('alert-danger', 'Error!', 'Value cannot be lower than 0.');
         return;
     }
-       
+
     //set to var and update
     total_enconters = enc;
     UpdateData();
@@ -118,7 +118,7 @@ function CustomEncounters() {
     DisplayAlertSetup('alert-success', 'Success!', 'Number of encounters updated.');
 }
 
-function CustomCombo() { 
+function CustomCombo() {
     //get value from imput
     var combo = $('#custom_combo').val();
     combo = Number(combo); //convert value to Num
@@ -132,7 +132,7 @@ function CustomCombo() {
         DisplayAlertSetup('alert-danger', 'Error!', 'Value cannot be lower than 0.');
         return;
     }
-       
+
     //set to var and update
     current_combo = combo;
     $('#combo').text(current_combo);
@@ -176,7 +176,7 @@ function NinetyPercentAt(prob) {
     if (prob == 0)
         return 0;
 
-    //start vars at 0 
+    //start vars at 0
     var binomial = 0;
     var encounters = 0;
 
@@ -235,9 +235,15 @@ function DecreaseCombo() {
 }
 
 function UpdatePokeImg(number){
-    var n = parseInt(number);
+    var regExp = /[a-zA-Z]/g;
+
+
+    if (!regExp.test(number)){
+        number = parseInt(number);
+    }
+    console.log(number);
     $(".card-body").show();
 
-    $("#img_poke").attr("src","sprites/" + n + ".png");
-    $("#img_poke_shiny").attr("src","sprites/shiny/" + n + ".png");
+    $("#img_poke").attr("src","sprites/" + number + ".png");
+    $("#img_poke_shiny").attr("src","sprites/shiny/" + number + ".png");
 }
