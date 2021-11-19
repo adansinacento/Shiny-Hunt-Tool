@@ -1,5 +1,5 @@
 # Shiny Hunt Tool
-Your shiny hunt companion.  
+Your shiny hunt companion. [Here is the link.](https://adansinacento.github.io/Shiny-Hunt-Tool/)    
 This software is meant to be a tool and help you in the (sometimes) tedious shiny hunt. It can help you keep the count, calculate statistics and so much more.
 
 ## How to use?
