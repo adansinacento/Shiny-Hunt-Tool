@@ -209,8 +209,10 @@ function ChangeHuntMethod(meth){
     if (meth == 'cc') {
         $('#comboMeterRow').show();
         $('#custom-combo-container').show('fast')
+        $('#lure-check-container').show('fast')
     } else {
         $('#custom-combo-container').hide('fast')
+        $('#lure-check-container').hide('fast')
     }
     UpdateData();
 }
