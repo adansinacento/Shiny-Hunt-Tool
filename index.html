@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Pokemon shiny hunt</title>
@@ -124,7 +124,19 @@
                             <option value="mm">Masuda method</option>
                             <option value="cc">Catch combo</option>
                             <option value="ko">KO / Brilliant</option>
+                            <option value="custom">Custom probability</option>
                         </select>
+                    </div>
+                    <div class="form-group" id="custom-container" style="display: none;">
+                        <div class="col-auto">
+                            <label class="" for="custom_prob">Set probability:</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">1/</div>
+                                </div>
+                                <input type="number" class="form-control" id="custom_prob" placeholder="4096" onchange="ChangeCustomProb(this.value)">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group" id="num-ko-container" style="display: none;">
                         <label>Number of KOs</label>
@@ -160,9 +172,9 @@
     </main>
 
     <footer class="footer">
-      <div class="container">
-        <span class="text-muted">Created by <a href="https://twitter.com/AdanSinAcento" target="_blank">AdanSinAcento</a>. Check sourcecode on <a a href="https://github.com/AdanSinAcento/Shiny-Hunt-Tool" target="_blank">Github</a></span>
-      </div>
+        <div class="container">
+            <span class="text-muted">Created by <a href="https://twitter.com/AdanSinAcento" target="_blank">AdanSinAcento</a>. Check sourcecode on <a a href="https://github.com/AdanSinAcento/Shiny-Hunt-Tool" target="_blank">Github</a></span>
+        </div>
     </footer>
     <script src="js/names.js" charset="utf-8"></script>
     <script src="js/main.js" charset="utf-8"></script>

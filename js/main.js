@@ -3,6 +3,7 @@ var probability = 0;
 var ninetyAt = 0;
 var current_combo = 0;
 var num_kos = 0;
+var custom_prob = 4096;
 
 function IncreaseEncounter(){
     total_enconters += 1;
@@ -83,7 +84,22 @@ function softReset(charm, prob){
     return factor / prob;
 }
 
+function ChangeCustomProb(newProb){
+    if (newProb < 1){
+        $('#custom_prob').val(1);
+        return;
+    }
+
+    custom_prob = newProb;
+    UpdateData();
+}
+
 function BaseProbability(){
+    //if user selected "custom" then we already know the probability
+    if ($('#sel_meth').val() == 'custom'){
+        return custom_prob;
+    }
+
     var generation = $('#sel_gen').val();
 
     if (generation < 6)
@@ -207,7 +223,7 @@ function NinetyPercentAt(prob) {
         binomial = BinomialProbability(prob, encounters++);
     }
 
-    return encounters;
+    return encounters-1;
 }
 
 function BinomialProbability(prob, cases){
@@ -232,6 +248,8 @@ function ChangeHuntMethod(meth){
     $('#lure-check-container').hide('fast')
     //brilliant/ko
     $('#num-ko-container').hide('fast')
+    //custom prob
+    $('#custom-container').hide('fast')
 
     if (meth == 'cc') {
         $('#comboMeterRow').show();
@@ -239,6 +257,8 @@ function ChangeHuntMethod(meth){
         $('#lure-check-container').show('fast')
     } else if (meth == "ko") {
         $('#num-ko-container').show('fast')
+    } else if (meth == 'custom'){
+        $('#custom-container').show('fast')
     }
     UpdateData();
 }
