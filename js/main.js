@@ -2,6 +2,7 @@ var total_enconters = 0;
 var probability = 0;
 var ninetyAt = 0;
 var current_combo = 0;
+var num_kos = 0;
 
 function IncreaseEncounter(){
     total_enconters += 1;
@@ -34,6 +35,25 @@ function catchCombo(charm, baseProbability){
     }
 
     return factor / baseProbability;
+}
+
+function brilliantKo(charm, baseProbability){
+    var factor = 1;
+
+    //calculate base
+    if (charm){
+        factor += 2;
+    }
+
+    factor += num_kos; //num_kos actually stores the number of re-rolls
+    console.log(factor);
+
+    return factor / baseProbability;
+}
+
+function ChangeNumKos(kos){
+    num_kos = parseInt(kos);
+    UpdateData();
 }
 
 function masudaMethod(charm, prob, generation){
@@ -83,6 +103,8 @@ function getProbability(){
         case 'mm':
             var gen = $('#sel_gen').val();
             return masudaMethod(has_charm, prob, gen);
+        case 'ko':
+            return brilliantKo(has_charm, prob);
         default:
             return softReset(has_charm, prob);
     }
@@ -203,16 +225,20 @@ $(document).ready(function() {
 });
 
 function ChangeHuntMethod(meth){
-    //hide catch combo row and display it only if that method was selected
+    //hide sum component for method specific things and display them only if that method was selected
+    //catch combo
     $('#comboMeterRow').hide();
+    $('#custom-combo-container').hide('fast')
+    $('#lure-check-container').hide('fast')
+    //brilliant/ko
+    $('#num-ko-container').hide('fast')
 
     if (meth == 'cc') {
         $('#comboMeterRow').show();
         $('#custom-combo-container').show('fast')
         $('#lure-check-container').show('fast')
-    } else {
-        $('#custom-combo-container').hide('fast')
-        $('#lure-check-container').hide('fast')
+    } else if (meth == "ko") {
+        $('#num-ko-container').show('fast')
     }
     UpdateData();
 }

@@ -123,6 +123,19 @@
                             <option selected value="sr" >Random encounter / sr</option>
                             <option value="mm">Masuda method</option>
                             <option value="cc">Catch combo</option>
+                            <option value="ko">KO / Brilliant</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="num-ko-container" style="display: none;">
+                        <label>Number of KOs</label>
+                        <select class="custom-select" id="sel-kos" onchange="ChangeNumKos(this.value)">
+                            <option value="0">0</option>
+                            <option value="1">1 - 49</option>
+                            <option value="2">50 - 99</option>
+                            <option value="3">100 - 199</option>
+                            <option value="4">200 - 299</option>
+                            <option value="5">300 - 499</option>
+                            <option value="6">500+</option>
                         </select>
                     </div>
                     <div id="custom-combo-container" style="display: none;">
